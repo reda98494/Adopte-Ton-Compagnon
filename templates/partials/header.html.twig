@@ -1,0 +1,29 @@
+<nav>
+    <h1><a href="/">ATC</a></h1>
+    <ul>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li><a href="/animals">Adopt</a></li>
+            <li><a href="/adoptions">Adoptions</a></li>
+            <li><a href="/makeDonation">Make donation</a>
+            <li><a href="/donations">Donations</a></li>
+            </li><li><a href="/products">Products</a></li>
+            <li><a href="/articles">Articles</a></li>
+            <li>Welcome, {{ app.user.username }}</li>
+            <li><a class="navbar-brand" href="/order">
+                    <div class="logo-image">
+                        <img src="/shopping-cart.png" class="img-fluid">
+                    </div>
+                </a>
+            </li>
+            <li><a href="/logout">Log out</a></li>
+        {% else %}
+            <li><a href="/animals">Adopt</a></li>
+            <li><a href="/adoptions">Adoptions</a></li>
+            <li><a href="/donations">Donations</a></li>
+            </li><li><a href="/products">Products</a></li>
+            <li><a href="/articles">Articles</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/register">Sign up</a></li>
+        {% endif %}
+    </ul>
+</nav>

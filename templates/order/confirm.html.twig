@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Confirmation
+{% endblock %}
+
+{% block body %}
+
+    <div class="cardContainer">
+        <ul>
+            <li class="articleItem">
+                <img src="/box.png" alt="article icon">
+                <h4>Order confirmed {{ user.username }} !</h4>
+                <p>Your order has been submitted</p>
+                <button class="button"><a href="/products" class="link">Go back</a></button>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

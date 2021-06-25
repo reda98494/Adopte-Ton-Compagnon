@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+    <ul class="articles">
+        {# Sort article by the latest date #}
+        {% for article in articles |sort((a, b) => b.date <=> a.date) %}
+        <li class="articleItem">
+            <img src="/post.png" alt="article icon">
+            <h4>{{ article.title }}</h4>
+            <p>{{ article.content }}</p>
+            <span class="badge">{{ article.date | date('Y-m-d') }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

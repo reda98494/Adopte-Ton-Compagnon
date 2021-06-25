@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+{#{% block title %}Adopt an animal!{% endblock %}#}
+
+{% block body %}
+    <div class="cardContainer">
+        <ul>
+            <li class="articleItem">
+                {% if animal.race == 'dog' %}
+                    <img src="/corgi.png" alt="article icon">
+                {% elseif animal.race == 'cat' %}
+                    <img src="/cat-face.png" alt="article icon">
+                {% else %}
+                    <img src="/macaw.png" alt="article icon">
+                {% endif %}
+                <h4>Congratulations {{ user.username }} !</h4>
+                <p>{{ animal.name }} is your new Compagnon </p>
+                <button class="button"><a href="/animals" class="link">Go back</a></button>
+                <button class="button"><a href="/adoptions" class="link">See adoptions</a></button>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

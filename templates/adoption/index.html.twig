@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adoptions!{% endblock %}
+
+{% block body %}
+    <ul class="articles">
+        {% for adoption in adoptions | sort((a, b) => b.date <=> a.date) %}
+            <li class="articleItem">
+                {% if adoption.animal.race == 'dog' %}
+                    <img src="/corgi.png" alt="article icon">
+                {% elseif adoption.animal.race == 'cat' %}
+                    <img src="/cat-face.png" alt="article icon">
+                {% else %}
+                    <img src="/macaw.png" alt="article icon">
+                {% endif %}
+                <h4>{{ adoption.animal.name }}</h4>
+                <p>Adopted by : {{ adoption.user.username }}</p>
+                <span class="badge">{{ adoption.animal.age }} Years old | {{ adoption.animal.weight}} KG</span>
+                <span class="badge">{{ adoption.date | date('Y-m-d') }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

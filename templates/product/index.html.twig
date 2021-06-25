@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Our products!{% endblock %}
+
+{% block body %}
+    <ul class="articles">
+        {# Sort article by the latest date #}
+        {% for product in products | sort((a, b) => b.price <=> a.price) %}
+            <li class="articleItem">
+                {% if product.type == 'food' %}
+                    <img src="/puppy.png" alt="article icon">
+                {% else %}
+                    <img src="/pet-toy.png" alt="article icon">
+                {% endif %}
+                <h4>{{ product.name }}</h4>
+                <p>{{ product.description }}</p>
+                <span class="badge">{{ product.price }} €</span>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <button class="button"><a href="{{ path('cart_add', {'id': product.id}) }}" class="link">Add To Cart</a></button>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ form_start(form) }}
+    <h1 class="h3 mb-3 font-weight-normal">Donation</h1>
+    {{ form_row(form.sum) }}
+    {{ form_row(form.Donate,{'attr': {'class': 'btn btn-info mt-3'}})}}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Adopt!{% endblock %}
+
+{% block body %}
+    <ul class="articles">
+        {# Sort article by the latest date #}
+        {% for animal in animals %}
+            {% if not animal.adoptedStatus %}
+                <li class="articleItem">
+                    {% if animal.race == 'dog' %}
+                        <img src="/corgi.png" alt="article icon">
+                    {% elseif animal.race == 'cat' %}
+                        <img src="/cat-face.png" alt="article icon">
+                    {% else %}
+                        <img src="/macaw.png" alt="article icon">
+                    {% endif %}
+                    <h4>{{ animal.name }}</h4>
+                    <p>{{ animal.description }}</p>
+                    <span class="badge">{{ animal.weight }} KG | {{ animal.age }} Years old</span>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <button class="button"><a class="link" href="/adopt/{{ animal.id }}">Adopt</a></button>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+{% endblock %}

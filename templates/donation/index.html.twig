@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Donations!{% endblock %}
+
+{% block body %}
+    <div class="donations">
+        <div class="box">
+            <h2>Donations</h2>
+            <ul>
+                {% for donation in donations | sort((a, b) => b.sum <=> a.sum) %}
+                    <li>{{ donation.sum }} € |  {{ donation.user.username }} | {{ donation.date | date('Y-m-d') }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
